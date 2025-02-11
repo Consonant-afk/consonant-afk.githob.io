@@ -28,7 +28,7 @@ body {
 }
 
 .envelop {
-  width: 15rem;
+  width: 30rem;
   height: 10rem;
   position: absolute;
   left: 0;
@@ -36,17 +36,17 @@ body {
   margin: auto;
 }
 
-@media (min-width: 400px) and (max-width: 600px) {
+@media (max-width: 500px) {
   .envelop {
-    width: 20rem;
-    height: 15rem;
+    width: 50rem;
+    max-width: 30rem;
   }
 }
 
 @media (min-width: 600px) {
   .envelop {
-    width: 25rem;
-    height: 20rem;
+    width: 50rem;
+    height: 25rem;
   }
 }
 
@@ -228,7 +228,7 @@ body {
 
 /* Note Text */
 .note__text {
-  font-family: "Cursive";
+  font-family: "Sofia";
   color: #000000;
   padding: 1rem;
 }
