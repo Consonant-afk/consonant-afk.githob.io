@@ -60,7 +60,7 @@ body {
   width: 150px; /* Adjust size */
   bottom: 10px; /* Adjust position */
   left: 50%;
-  transform: translateX(150%);
+  transform: translateX(70%);
 }
 
 .redirect-btn {
