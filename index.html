@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry! 🥺</title>
+    <style>
+       body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        background: url('img/bg.jpg') no-repeat center center/cover; /* Add background image */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        margin: 0;
+        padding: 10px;
+}
+
+        .container {
+            background: #987cb3;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 400px;
+        }
+        h2 {
+            color: #ff6b81;
+            font-size: 22px;
+        }
+        p {
+            color: #444;
+            font-size: 18px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            width: 80%;
+            max-width: 250px;
+        }
+        .yes {
+            background-color: #ff6b81;
+            color: white;
+            transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+        }
+        .yes:hover {
+            background-color: #ff4757;
+        }
+        .no {
+            background-color: #ccc;
+            color: white;
+            transition: font-size 0.3s ease-in-out;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 80%;
+            max-width: 200px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .shake {
+            animation: shake 0.3s ease-in-out 2;
+        }
+        .moving-gif {
+    width: 150px; /* Adjust size */
+    bottom: 10px; /* Adjust position */
+    left: 50%;
+    transform: translateX(-0%);
+}
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        @media (max-width: 480px) {
+            .btn, .submit-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Bati na us please? :)</h2>
+        <img src="img/cute.gif" alt="Moving Image" class="moving-gif">
+
+        <p>I’m really sorry! I promise to make it up to you. 💖</p>
+        <div class="buttons">
+            <button class="btn yes" id="yesBtn">Yes! 💕</button>
+            <button class="btn no" id="noBtn">No 😢</button>
+        </div>
+    </div>
+
+    <!-- Pop-up Modal -->
+    <div class="modal" id="popupModal">
+        <div class="modal-content">
+            <h3>Iloveyouuuuu</h3>
+            <input type="text" id="callsignInput" placeholder="clue may more sa dulo">
+            <button class="submit-btn" id="submitBtn">Goo Laban sa 4ps</button>
+        </div>
+    </div>
+
+    <script>
+       const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const popupModal = document.getElementById('popupModal');
+const callsignInput = document.getElementById('callsignInput');
+const submitBtn = document.getElementById('submitBtn');
+
+// Function to increase Yes button size
+function growYesButton() {
+    let currentSize = parseFloat(window.getComputedStyle(yesBtn).getPropertyValue('font-size'));
+    yesBtn.style.fontSize = (currentSize + 5) + "px"; // Increase font size by 5px
+    yesBtn.style.padding = "15px 30px"; // Adjust padding for better scaling
+    yesBtn.style.transition = "all 0.3s ease-in-out"; // Smooth effect
+}
+
+// Yes button grows when clicked
+yesBtn.addEventListener('click', () => {
+    growYesButton();
+    popupModal.style.display = "flex"; // Show modal
+    callsignInput.focus();
+});
+
+// No button shrinks and makes Yes button grow
+noBtn.addEventListener('click', () => {
+    let currentSize = parseFloat(window.getComputedStyle(noBtn).getPropertyValue('font-size'));
+    if (currentSize > 10) { // Prevent from getting too small
+        noBtn.style.fontSize = (currentSize - 2) + "px";
+        noBtn.style.padding = "8px 16px";
+        noBtn.style.transition = "all 0.3s ease-in-out";
+    }
+    
+    growYesButton(); // Yes button automatically grows when No is clicked
+});
+
+// Validate callsign and redirect
+submitBtn.addEventListener('click', () => {
+    if (callsignInput.value.toLowerCase() === "iloveyoumore") {
+        window.location.href = "dist/index.html"; // Change this to your desired URL
+    } else {
+        callsignInput.classList.add("shake");
+        setTimeout(() => {
+            callsignInput.classList.remove("shake");
+        }, 500);
+    }
+});
+
+// Hide modal if clicked outside
+window.addEventListener('click', (e) => {
+    if (e.target === popupModal) {
+        popupModal.style.display = "none";
+    }
+});
+
+    </script>
+
+</body>
+</html>
