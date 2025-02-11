@@ -60,7 +60,7 @@ body {
   width: 150px; /* Adjust size */
   bottom: 10px; /* Adjust position */
   left: 50%;
-  transform: translateX(70%);
+  transform: translateX(150%);
 }
 
 .redirect-btn {
@@ -228,7 +228,7 @@ body {
 
 /* Note Text */
 .note__text {
-  font-family: "Arial";
+  font-family: "Sofia";
   color: #000000;
   padding: 1rem;
 }
